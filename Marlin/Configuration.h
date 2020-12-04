@@ -499,10 +499,20 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    //RAV Ender 5 Plus woth full fan
-    #define DEFAULT_Kp 14.11
+    //RAV Ender 5 Plus New Head with full fan
+    #define DEFAULT_Kp 14.19
     #define DEFAULT_Ki 1.02
-    #define DEFAULT_Kd 48.93
+    #define DEFAULT_Kd 49.21
+
+    //RAV new head without fan
+    /*#define DEFAULT_Kp 14.22
+    #define DEFAULT_Ki 1.03
+    #define DEFAULT_Kd 49.32*/
+
+    //RAV Ender 5 Plus woth full fan
+    /*#define DEFAULT_Kp 14.11
+    #define DEFAULT_Ki 1.02
+    #define DEFAULT_Kd 48.93*/
   #endif
 #endif // PIDTEMP
 
@@ -682,8 +692,8 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-#define X_DRIVER_TYPE  TMC2130 //RAV A4988
-#define Y_DRIVER_TYPE  TMC2130 //RAV A4988
+#define X_DRIVER_TYPE  TMC2208 //RAV _STANDALONE //RAV A4988
+#define Y_DRIVER_TYPE  TMC2208 //RAV _STANDALONE //RAV A4988
 #define Z_DRIVER_TYPE  A4988
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
@@ -745,7 +755,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 4*80.00, 4*80.00, 800.00, 415.00 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 160.00, 160.00, 800.00, 415.00 } //RAV { 80.00, 80.00, 800.00, 415.00 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -990,7 +1000,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -39.0, 0, -3.0 }
+#define NOZZLE_TO_PROBE_OFFSET { -60.0, -10, -0.38 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1126,7 +1136,6 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 360 //RAV 200
 #define Y_BED_SIZE 360 //RAV 200
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -1246,7 +1255,7 @@
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -2298,7 +2307,7 @@
 // Use software PWM to drive the fan, as for the heaters. This uses a very low frequency
 // which is not as annoying as with the hardware PWM. On the other hand, if this frequency
 // is too low, you should also increment SOFT_PWM_SCALE.
-//#define FAN_SOFT_PWM
+#define FAN_SOFT_PWM //RAV
 
 // Incrementing this by 1 will double the software PWM frequency,
 // affecting heaters, and the fan if FAN_SOFT_PWM is enabled.
